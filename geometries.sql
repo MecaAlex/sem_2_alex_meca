@@ -33,8 +33,9 @@ INSERT INTO geometries(name, geom) VALUES
   ('PolygonWithHole', 'POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))'),
   ('Collection', 'GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))');
  
- UPDATE geometries SET geom = ST_SetSRID(geom, 3844);
+UPDATE geometries SET geom = ST_SetSRID(geom, 3844);
  
+
  
   
   
