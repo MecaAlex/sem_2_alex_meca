@@ -7,7 +7,7 @@ CREATE TABLE toponimii
 
 select * from toponimii;
 select ST_GeometryType(geom) from toponimii;
-
+select ST_AsText(geom) from toponimii;
 
 CREATE TABLE ax_drum
 (
@@ -41,6 +41,7 @@ CREATE TABLE stalpi
 
 select * from stalpi;
 select ST_GeometryType(geom) from stalpi;
+select ST_AsText(geom) from stalpi;
 
 CREATE TABLE retea_electrica
 (
@@ -52,6 +53,13 @@ CREATE TABLE retea_electrica
 select ST_GeometryType(geom) from retea_electrica;
 select * from retea_electrica;
 
+select ST_Points(geom) geom from retea_electrica
+union
+select geom from retea_electrica
+union 
+Select ST_Centroid(geom) geom from retea_electrica;
+
+
 CREATE TABLE drumuri
 (
 	fid SERIAL PRIMARY KEY,
@@ -60,8 +68,10 @@ CREATE TABLE drumuri
 	geom GEOMETRY(MultiPolygon,4326) --geometrie de tip punct in sistem de proiectie WGS84
 );
 
+
 select * from drumuri;
 select ST_GeometryType(geom) from drumuri;
+
 
 CREATE TABLE poduri --de explicat de ce QGIS nu vede nimic
 (
@@ -70,3 +80,6 @@ CREATE TABLE poduri --de explicat de ce QGIS nu vede nimic
 	geom GEOMETRY(GeometryCollection,4326) --geometrie de tip punct in sistem de proiectie WGS84
 );
 select ST_GeometryType(geom) from poduri;
+
+SELECT ST_LineFromMultiPoint('MULTIPOINT(1 2, 4 5, 7 8, 8 9 ,11 14)');
+
